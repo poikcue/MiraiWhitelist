@@ -1,0 +1,61 @@
+# AutoWhitelist
+# Author: poikcue
+# Using MiraiMC in order to support tencent bot.
+Message:
+  ReplaceGroupMessageTAG: +#
+  PremiumMinecraftAccountMessage: |-
+    感谢对CubeGarden的支持！
+    您的白名单已被添加。现在，您可以使用下列域(和版本)访问服务器了！
+     - mc.cubegarden.cn (1.18.2)
+    祝您游戏愉快。
+    (如果您看到了这句话，那么意味着您此时申请的为 EA 服务器白名单。)
+    (如果您是服务器管理员，您可以在 ~/plugins/MiraiWhitelist/config.yml 中修改这些话！)
+  CrackedMinecraftAccountAlert: |-
+    感谢您对CubeGarden的支持！
+    很抱歉通知您: 您所请求的ID为非正版账户！
+    请检查您所发送的ID的拼写，然后重试。
+    祝您生活愉快。
+    (如果您确认您的正版账户有效，请联系管理员进行人工核查白名单！)
+  UrlError: |-
+    感谢您对CubeGarden的支持！
+    很抱歉的通知您：
+    您目前的请求出现了一些问题。可能是由于服务器网络故障，或达到Mojang API速率最大限制。
+    请等待约10分钟，然后重试。
+    谢谢！
+    (如果您依然认为这是一个问题，请与管理员联系。)
+  SayHello: |-
+    您好！
+    如需在主服务器中申请白名单，请在和我的聊天中输入：
+    +#(您的ID)
+    请不要在任意位置携带空格。如果正确，您将会收到下一步的通知。
+    ——来自 CubeGarden 服务器。祝您一切顺利！
+  TeachModeReply: |-
+    你好，朋友！
+    您可以在这里自动化申请您的 CubeGarden 白名单！
+    您只需要向我发送：
+    +#(您的ID)
+    即可。请不要在任意位置携带空格，如果正确，您将会收到下一步的通知。
+    祝您一切顺利！
+  TeachModeKey: CG
+  AlreadySignedUp: |-
+    您好！
+    您所使用的账户已经向 CubeGarden 提交了一次白名单申请请求并已通过。
+    如果您认为这是一个错误，请向管理员报告。
+    祝您生活愉快。
+  WelcomeFriend: |-
+    你好！
+    欢迎来到 CubeGarden 服务器。
+    如需了解关于服务器，可访问 www.cubegarden.cn/play-guide。
+    祝一切顺利。
+  WelcomeRejoinFriend: |-
+    你好！
+    欢迎来到 CubeGarden 服务器。
+    在这之前，您已经申请过白名单。所以，您无需重新申请即可游玩！
+
+Group:
+  WorkInGroup: 600427272
+
+
+List:
+#If you don't know about this,
+#DON'T TOUCH THIS!!!!

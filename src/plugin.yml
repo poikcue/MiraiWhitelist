@@ -1,0 +1,5 @@
+name: MiraiWhitelist
+main: com.poikcue.MiAutoWhitelist.Main
+version: 1.1
+api-version: 1.13
+depend: [MiraiMC]

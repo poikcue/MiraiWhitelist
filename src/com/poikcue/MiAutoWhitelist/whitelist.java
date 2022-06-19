@@ -64,4 +64,4 @@ File config = new File("plugins/MiraiWhitelist/config.yml");
                     List<String> list = yamlConfiguration.getStringList("List");
                     String whitelist = Main.getInstance().getConfig().getString("List");
 */
-//Test commit
+//Test commit 2

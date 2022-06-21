@@ -1,0 +1,9 @@
+name: MiraiWhitelist
+main: com.poikcue.MiraiWhitelist.Main
+version: 1.1
+api-version: 1.13
+depend: [MiraiMC]
+commands:
+  miraiwhitelistreload:
+    usage: "/miraiwhitelistreload"
+    description: "Allow player who have permission MiraiWhitelist.reload can reload config."

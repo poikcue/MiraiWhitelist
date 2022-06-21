@@ -1,8 +1,28 @@
-# AutoWhitelist
-# Author: poikcue
-# Using MiraiMC in order to support tencent bot.
+# MiraiWhitelist
+# 作者: poikcue
+# 请在 (Java服务端)/plugins 内放入MiraiMC.
+# 本插件以 MiraiMC 1.6.1为依赖，使用时，可能需要进行一定的配置。
 Message:
   ReplaceGroupMessageTAG: +#
+  ReplaceForceGroupMessageTAG: "!#Add "
+  ReplaceForceConfirmMessageTAG: "!#Confirm "
+  ForceMessage: |-
+    ## 强行添加白名单警告 ##
+    感谢您对CubeGarden的支持！
+    您即将强行为一个 Minecraft 账户添加到白名单：
+     - %ID%
+    请确认您的ID是否正确。如正确，请输入"!#Confirm %ID%"
+    如果不正确，您可以修改后输入"!#Confirm <正确的ID>"
+    如果一切正常，请使用"+#<ID>"申请您的白名单，这是安全的。
+    ## 关于更多强行添加白名单的潜在风险，请详见: ##
+    ## docs.poikcue.com/whitelist/Force-add-warn/ ##
+    祝您一切顺利。
+  ForceConfirmMessage: |-
+    ## 强行添加白名单 ##
+    感谢您对CubeGarden的支持！
+    您的白名单已被添加。祝您游戏愉快。
+    如果您依然无法连接到服务器，请与管理员联系。
+    谢谢！
   PremiumMinecraftAccountMessage: |-
     感谢对CubeGarden的支持！
     您的白名单已被添加。现在，您可以使用下列域(和版本)访问服务器了！
@@ -19,43 +39,22 @@ Message:
   UrlError: |-
     感谢您对CubeGarden的支持！
     很抱歉的通知您：
-    您目前的请求出现了一些问题。可能是由于服务器网络故障，或达到Mojang API速率最大限制。
-    请等待约10分钟，然后重试。
-    谢谢！
-    (如果您依然认为这是一个问题，请与管理员联系。)
-  SayHello: |-
-    您好！
-    如需在主服务器中申请白名单，请在和我的聊天中输入：
-    +#(您的ID)
-    请不要在任意位置携带空格。如果正确，您将会收到下一步的通知。
-    ——来自 CubeGarden 服务器。祝您一切顺利！
-  TeachModeReply: |-
-    你好，朋友！
-    您可以在这里自动化申请您的 CubeGarden 白名单！
-    您只需要向我发送：
-    +#(您的ID)
-    即可。请不要在任意位置携带空格，如果正确，您将会收到下一步的通知。
-    祝您一切顺利！
-  TeachModeKey: CG
+    您目前的请求出现了一些问题。这应该由您的拼写问题引起的，请检查。
+    (如果您依然认为这是由于网络或API问题，请与管理员联系。)
   AlreadySignedUp: |-
     您好！
     您所使用的账户已经向 CubeGarden 提交了一次白名单申请请求并已通过。
     如果您认为这是一个错误，请向管理员报告。
     祝您生活愉快。
-  WelcomeFriend: |-
-    你好！
-    欢迎来到 CubeGarden 服务器。
-    如需了解关于服务器，可访问 www.cubegarden.cn/play-guide。
-    祝一切顺利。
-  WelcomeRejoinFriend: |-
-    你好！
-    欢迎来到 CubeGarden 服务器。
-    在这之前，您已经申请过白名单。所以，您无需重新申请即可游玩！
 
-Group:
-  WorkInGroup: 600427272
-
-
-List:
-#If you don't know about this,
-#DON'T TOUCH THIS!!!!
+# 如果你不清楚(下面)部分的用途，请不要修改它。
+# 下面的文本用于数据存储。每完成请求(成功)一次白名单，都会在下方被添加或被修改。
+# ** 第二部分 **
+# 关于玩家的数据部分。
+Data:
+  # 这里是一个示例文本。请在实际使用时删除它。
+  # 下方有一些基本的数据。
+  2: 1111-1111-1111-1111
+  # 此处的“2”即实际的QQ号。
+  # 此处的一串“1”即实际玩家的UUID。这里随便用个字符替代了，因为我懒。
+  # 想删除此QQ对应的UUID，只需删除。

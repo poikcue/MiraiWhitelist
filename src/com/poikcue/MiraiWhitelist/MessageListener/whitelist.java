@@ -29,7 +29,7 @@ public class whitelist implements Listener {
                 connection.setRequestMethod("GET");
                 if (plugin.getConfig().get("Data." + sender) == null) {
                     if (connection.getResponseCode() == HttpURLConnection.HTTP_OK) {
-                        MiraiBot.getBot(e.getBotID()).getGroup(e.getGroupID()).sendMessage(plugin.getConfig().getString("Message.PremiumMinecraftAccountMessage"));
+                        MiraiBot.getBot(e.getBotID()).getGroup(e.getGroupID()).sendMessage(plugin.getConfig().getString("Message.PremiumMinecraftAccountMessage").replaceAll("%ID%", name));
                         getScheduler().runTaskAsynchronously(Main.getInstance(), new Runnable() {
                             @Override
                             public void run() {
@@ -40,15 +40,15 @@ public class whitelist implements Listener {
                         getScheduler().runTask(Main.getInstance(), () -> dispatchCommand(getConsoleSender(), "whitelist add " + name));
                         //正版玩家
                     } else if (connection.getResponseCode() == HttpURLConnection.HTTP_NO_CONTENT) {
-                        MiraiBot.getBot(e.getBotID()).getGroup(e.getGroupID()).sendMessage(plugin.getConfig().getString("Message.CrackedMinecraftAccountAlert"));
+                        MiraiBot.getBot(e.getBotID()).getGroup(e.getGroupID()).sendMessage(plugin.getConfig().getString("Message.CrackedMinecraftAccountAlert").replaceAll("%ID%", name));
                         //正常访问，但是是离线玩家
                     } else {
-                        MiraiBot.getBot(e.getBotID()).getGroup(e.getGroupID()).sendMessage(plugin.getConfig().getString("Message.UrlError"));
+                        MiraiBot.getBot(e.getBotID()).getGroup(e.getGroupID()).sendMessage(plugin.getConfig().getString("Message.UrlError").replaceAll("%ID%", name));
                         //出现问题，访问异常
                     }
                 }
                 else {
-                    MiraiBot.getBot(e.getBotID()).getGroup(e.getGroupID()).sendMessage(plugin.getConfig().getString("Message.AlreadySignedUp"));
+                    MiraiBot.getBot(e.getBotID()).getGroup(e.getGroupID()).sendMessage(plugin.getConfig().getString("Message.AlreadySignedUp").replaceAll("%ID%", name));
                 }
             }
     }

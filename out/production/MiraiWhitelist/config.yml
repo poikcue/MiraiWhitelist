@@ -4,25 +4,9 @@
 # 本插件以 MiraiMC 1.7-pre3为依赖，使用时，可能需要进行一定的配置。
 Message:
   ReplaceGroupMessageTAG: +#
-  ReplaceForceGroupMessageTAG: "!#Add "
-  ReplaceForceConfirmMessageTAG: "!#Confirm "
-  ForceMessage: |-
-    ## 强行添加白名单警告 ##
-    感谢您对CubeGarden的支持！
-    您即将强行为一个 Minecraft 账户添加到白名单：
-     - %ID%
-    请确认您的ID是否正确。如正确，请输入"!#Confirm %ID%"
-    如果不正确，您可以修改后输入"!#Confirm <正确的ID>"
-    如果一切正常，请使用"+#<ID>"申请您的白名单，这是安全的。
-    ## 关于更多强行添加白名单的潜在风险，请详见: ##
-    ## docs.poikcue.com/whitelist/Force-add-warn/ ##
-    祝您一切顺利。
-  ForceConfirmMessage: |-
-    ## 强行添加白名单 ##
-    感谢您对CubeGarden的支持！
-    您的白名单已被添加。祝您游戏愉快。
-    如果您依然无法连接到服务器，请与管理员联系。
-    谢谢！
+  GroupCommandTAG: "%#"
+  ForceInGameMessage: "&a已成功强制为 &f%qq% &r&a添加 &f%id% &a的白名单。"
+  ForceInGameUnsuccessfulMessage: "&c此玩家已申请过白名单并已通过。"
   PremiumMinecraftAccountMessage: |-
     感谢对CubeGarden的支持！
     您的白名单已被添加。现在，您可以使用下列域(和版本)访问服务器了！
@@ -30,6 +14,7 @@ Message:
     祝您游戏愉快。
     (如果您看到了这句话，那么意味着您此时申请的为 EA 服务器白名单。)
     (如果您是服务器管理员，您可以在 ~/plugins/MiraiWhitelist/config.yml 中修改这些话！)
+  ForceAdd: 已请求强制添加参数为 "%arg%" 的白名单。
   CrackedMinecraftAccountAlert: |-
     感谢您对CubeGarden的支持！
     很抱歉通知您: 您所请求的ID为非正版账户！
@@ -57,7 +42,8 @@ Message:
 Data:
   # 这里是一个示例文本。请在实际使用时删除它。
   # 下方有一些基本的数据。
-  2: 1111-1111-1111-1111
+  '2':
+    UUID: 1111-1111-1111-1111
   # 此处的“2”即实际的QQ号。
   # 此处的一串“1”即实际玩家的UUID。这里随便用个字符替代了，因为我懒。
   # 想删除此QQ对应的UUID，只需删除。

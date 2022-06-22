@@ -1,5 +1,8 @@
 package com.poikcue.MiraiWhitelist;
 
+import com.poikcue.MiraiWhitelist.Command.command;
+import com.poikcue.MiraiWhitelist.MessageListener.adminForce;
+import com.poikcue.MiraiWhitelist.MessageListener.whitelist;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -13,12 +16,12 @@ public class Main extends JavaPlugin {
         instance = this;
         PluginManager pm = getServer().getPluginManager();
         pm.registerEvents(new whitelist(this), this);
-        pm.registerEvents(new welcome(), this);
-        pm.registerEvents(new force(this), this);
+        pm.registerEvents(new welcome(this), this);
+        pm.registerEvents(new adminForce(this), this);
         saveDefaultConfig();
         getConfig().options().copyDefaults(true);
-        if (Bukkit.getPluginCommand("miraiwhitelistreload") != null) {
-            Objects.requireNonNull(Bukkit.getPluginCommand("miraiwhitelistreload")).setExecutor(new reload());
+        if (Bukkit.getPluginCommand("miraiwhitelist") != null) {
+            Objects.requireNonNull(Bukkit.getPluginCommand("miraiwhitelist")).setExecutor(new command());
         }
     }
 

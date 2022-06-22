@@ -1,4 +1,5 @@
-package com.poikcue.MiraiWhitelist;
+package com.poikcue.MiraiWhitelist.MessageListener;
+import com.poikcue.MiraiWhitelist.Main;
 import me.dreamvoid.miraimc.api.MiraiBot;
 import me.dreamvoid.miraimc.bukkit.event.message.passive.MiraiGroupMessageEvent;
 import org.bukkit.Bukkit;
@@ -19,7 +20,7 @@ public class whitelist implements Listener {
     @EventHandler
     public void onMessageGet(MiraiGroupMessageEvent e) throws Exception {
 
-            if (e.getMessage().contains(plugin.getConfig().getString("Message.ReplaceGroupMessageTAG"))) {
+            if (e.getMessage().startsWith(plugin.getConfig().getString("Message.ReplaceGroupMessageTAG"))) {
                 String name = e.getMessage().replace(plugin.getConfig().getString("Message.ReplaceGroupMessageTAG"), "");
                 String sender = String.valueOf(e.getSenderID());
                 URL url = new URL("https://api.mojang.com/users/profiles/minecraft/" + name);
@@ -29,8 +30,13 @@ public class whitelist implements Listener {
                 if (plugin.getConfig().get("Data." + sender) == null) {
                     if (connection.getResponseCode() == HttpURLConnection.HTTP_OK) {
                         MiraiBot.getBot(e.getBotID()).getGroup(e.getGroupID()).sendMessage(plugin.getConfig().getString("Message.PremiumMinecraftAccountMessage"));
-                        plugin.getConfig().set("Data." + sender + ".UUID", String.valueOf(uuid));
-                        plugin.saveConfig();
+                        getScheduler().runTaskAsynchronously(Main.getInstance(), new Runnable() {
+                            @Override
+                            public void run() {
+                                plugin.getConfig().set("Data." + sender + ".UUID", String.valueOf(uuid));
+                                plugin.saveConfig();
+                            }
+                        });
                         getScheduler().runTask(Main.getInstance(), () -> dispatchCommand(getConsoleSender(), "whitelist add " + name));
                         //正版玩家
                     } else if (connection.getResponseCode() == HttpURLConnection.HTTP_NO_CONTENT) {
@@ -40,21 +46,8 @@ public class whitelist implements Listener {
                         MiraiBot.getBot(e.getBotID()).getGroup(e.getGroupID()).sendMessage(plugin.getConfig().getString("Message.UrlError"));
                         //出现问题，访问异常
                     }
-                } else if (plugin.getConfig().get("Data." + sender) == "EMPTY") {
-                    if (connection.getResponseCode() == HttpURLConnection.HTTP_OK) {
-                        MiraiBot.getBot(e.getBotID()).getGroup(e.getGroupID()).sendMessage(plugin.getConfig().getString("Message.PremiumMinecraftAccountMessage"));
-                        plugin.getConfig().set("Data." + sender + ".UUID", String.valueOf(uuid));
-                        plugin.saveConfig();
-                        getScheduler().runTask(Main.getInstance(), () -> dispatchCommand(getConsoleSender(), "whitelist add " + name));
-                        //正版玩家
-                    } else if (connection.getResponseCode() == HttpURLConnection.HTTP_NO_CONTENT) {
-                        MiraiBot.getBot(e.getBotID()).getGroup(e.getGroupID()).sendMessage(plugin.getConfig().getString("Message.CrackedMinecraftAccountAlert"));
-                        //正常访问，但是是离线玩家
-                    } else {
-                        MiraiBot.getBot(e.getBotID()).getGroup(e.getGroupID()).sendMessage(plugin.getConfig().getString("Message.UrlError"));
-                        //出现问题，访问异常
-                    }
-                } else {
+                }
+                else {
                     MiraiBot.getBot(e.getBotID()).getGroup(e.getGroupID()).sendMessage(plugin.getConfig().getString("Message.AlreadySignedUp"));
                 }
             }

@@ -2,12 +2,15 @@ package com.poikcue.MiraiWhitelist;
 
 import com.poikcue.MiraiWhitelist.Command.command;
 import com.poikcue.MiraiWhitelist.MessageListener.adminForce;
+import com.poikcue.MiraiWhitelist.MessageListener.prejoin;
 import com.poikcue.MiraiWhitelist.MessageListener.whitelist;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.util.Objects;
+
+import static org.bukkit.Bukkit.getScheduler;
 
 public class Main extends JavaPlugin {
     private static Main instance;
@@ -18,8 +21,10 @@ public class Main extends JavaPlugin {
         pm.registerEvents(new whitelist(this), this);
         pm.registerEvents(new welcome(this), this);
         pm.registerEvents(new adminForce(this), this);
+        pm.registerEvents(new prejoin(this), this);
         saveDefaultConfig();
         getConfig().options().copyDefaults(true);
+        getScheduler().runTaskAsynchronously(Main.getInstance(), () -> instance.getConfig().set("General.Version.CurrentConfig", "1.2.1"));
         if (Bukkit.getPluginCommand("miraiwhitelist") != null) {
             Objects.requireNonNull(Bukkit.getPluginCommand("miraiwhitelist")).setExecutor(new command());
         }

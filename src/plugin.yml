@@ -1,6 +1,6 @@
 name: MiraiWhitelist
 main: com.poikcue.MiraiWhitelist.Main
-version: 1.2
+version: 1.2.1
 api-version: 1.13
 depend: [MiraiMC]
 commands:

@@ -1,0 +1,69 @@
+# MiraiWhitelist
+# 作者: poikcue
+# 请在 (Java服务端)/plugins 内放入MiraiMC.
+# 此插件永久开源。如果您需要更新，请下载最新版本，然后根据源代码中的 config.yml 添加新的内容。
+General:
+  # 从此开始...
+  WhitelistCommand: Vanilla
+  # 如 WhitelistCommand 的内容为 Vanilla，则使用原版白名单系统。
+  # 如改成任意其它内容，将替换为第三方白名单插件。如果您没有第三方白名单插件，请不要动它，或启用下文中的内置白名单选项。
+  # 一个例子：
+  # WhitelistCommand: mywhitelist %ID%
+  # 这里即使用第三方插件命令”mywhitelist“，%ID%则为变量，可用于替换实际玩家。您不能省略此变量 %ID%!!!
+  # (您不应该添加斜杠"/"，mywhitelist只是一个示例，与任何插件都无关)
+  Enable:
+   BuildInWhitelist: true
+   # 如果想用原版或自定义命令插件，请禁用此项。
+   # 若启用该项，请禁用原版白名单和一切所有其它白名单插件。MiraiWhitelist 将自动地完成内置白名单工作。
+Message:
+  ReplaceGroupMessageTAG: +#
+  GroupCommandTAG: "%#"
+  ForceInGameMessage: "&a已成功强制为 &f%qq% &r&a添加 &f%id% &a的白名单。"
+  ForceInGameUnsuccessfulMessage: "&c此玩家已申请过白名单并已通过。"
+  HaveNotWhitelist: |-
+    &c对不起！您还&l未被添加至白名单&r&c。
+    &c请您添加到群 &l600427272 &r&c后按照指示完成白名单引导工作。
+  PremiumMinecraftAccountMessage: |-
+    @%name% 您所请求的白名单（%ID%）已被添加。现在，您可以使用下列域（和版本）访问服务器了！
+    - mc.cubegarden.cn (1.18.2)
+    祝您游戏愉快。
+  ForceAdd: 已请求强制添加参数为 "%arg%" 的白名单。
+  CrackedMinecraftAccountAlert: |-
+    @%name% 当我们尝试请求您的白名单（%ID%）时发现该ID似乎为非正版。
+    请检查拼写后重试。若正确，请与管理员联系！
+  UrlError: |-
+    @%name% 请求您的白名单（%ID%）时与Mojang API连接异常。请检查或稍后重试。
+  AlreadySignedUp: |-
+    @%name% 您的账户似乎已经存在可用的白名单了。
+    若您没有进行过此操作，请与管理员联系。
+  AlreadyHave: |-
+    @%name% 您请求的目标白名单（%ID%）已经在白名单中了。
+    若您无法访问服务器，请与管理员联系。
+  WelcomeFriend: |-
+    @%name% 欢迎来到CubeGarden！
+    如需为您的账户申请白名单，请输入：“+#<您的ID>”
+  Reload:
+    Success: "&a成功重载！"
+    Without-permission: "&c你没有权限这么做！"
+
+# 如果你不清楚(下面)部分的用途，请不要修改它。
+# 下面的文本用于数据存储。每完成请求(成功)一次白名单，都会在下方被添加或被修改。
+# ** 第二部分 **
+# 关于玩家的数据部分。
+Data:
+  # 这里是一个示例文本。请在实际使用时删除它。
+  # 下方有一些基本的数据。
+  '2':
+    UUID: 1111-1111-1111-1111
+  # 此处的“2”即实际的QQ号。
+  # 此处的一串“1”即实际玩家的UUID。这里随便用个字符替代了，因为我懒。
+  # 想删除此QQ对应的UUID，只需删除。
+
+
+Whitelist:
+  # 这里是第二部分
+  '1111-1111-1111-1111': true
+  # 看这里！
+  # 如果在上面启用了 BuildInWhitelist，那么这里的白名单将是决定玩家是否能加入到服务器的唯一标准。
+  # '1111-1111-1111-1111'实际即该UUID所对的玩家。true即启用该玩家白名单，false或其它内容则禁用该白名单。
+  # 这通常不与上方的 "Data" 关联。但是，您可以通过UUID搜索找到对应的QQ号。

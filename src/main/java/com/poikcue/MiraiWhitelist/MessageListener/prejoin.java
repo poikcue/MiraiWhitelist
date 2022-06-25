@@ -8,7 +8,7 @@ import org.bukkit.event.player.AsyncPlayerPreLoginEvent;
 
 import java.util.UUID;
 
-import static net.md_5.bungee.api.ChatColor.translateAlternateColorCodes;
+import static org.bukkit.ChatColor.*;
 
 public class prejoin implements Listener {
     private Main plugin;

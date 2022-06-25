@@ -23,7 +23,12 @@ public class Main extends JavaPlugin {
         pm.registerEvents(new adminForce(this), this);
         pm.registerEvents(new prejoin(this), this);
         saveDefaultConfig();
-        getScheduler().runTaskAsynchronously(Main.getInstance(), () -> instance.getConfig().set("General.Version.CurrentConfig", "1.2.2"));
+        getScheduler().runTaskAsynchronously(Main.getInstance(), new Runnable() {
+                    @Override
+                    public void run() {
+                        instance.getConfig().set("General.Version.CurrentConfig", "1.2.2");
+                    }
+                });
         if (Bukkit.getPluginCommand("miraiwhitelist") != null) {
             Objects.requireNonNull(Bukkit.getPluginCommand("miraiwhitelist")).setExecutor(new command());
         }

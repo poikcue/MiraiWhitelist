@@ -40,10 +40,20 @@ public class whitelist implements Listener {
                              }
                          });
                          if (plugin.getConfig().getString("General.WhitelistCommand") == "Vanilla" && plugin.getConfig().getString("General.Enable.BuildInWhitelist") == "false") {
-                             getScheduler().runTask(Main.getInstance(), () -> dispatchCommand(getConsoleSender(), "whitelist add " + name));
+                             getScheduler().runTask(Main.getInstance(), new Runnable() {
+                                 @Override
+                                 public void run() {
+                                     dispatchCommand(getConsoleSender(), "whitelist add " + name);
+                                 }
+                             });
                          } else if(plugin.getConfig().getString("General.Enable.BuildInWhitelist") == "false") {
                              String command = plugin.getConfig().getString("General.WhitelistCommand");
-                             getScheduler().runTask(Main.getInstance(), () -> dispatchCommand(getConsoleSender(), command.replaceAll("%ID%", name)));
+                             getScheduler().runTaskAsynchronously(Main.getInstance(), new Runnable() {
+                                 @Override
+                                 public void run() {
+                                     dispatchCommand(getConsoleSender(), command.replaceAll("%ID%", name));
+                                 }
+                             });
                          }
                          //正版玩家
                      } else if (connection.getResponseCode() == HttpURLConnection.HTTP_NO_CONTENT) {

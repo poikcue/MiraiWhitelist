@@ -18,7 +18,12 @@ public class adminForce implements Listener {
         if(e.getSenderPermission() != 0){
             if(e.getMessage().startsWith(plugin.getConfig().getString("Message.GroupCommandTAG"))){
                 String string = e.getMessage().replace(plugin.getConfig().getString("Message.GroupCommandTAG"), "").replaceAll(" ", "");
-                getScheduler().runTask(Main.getInstance(), () -> dispatchCommand(getConsoleSender(), "miraiwhitelist force " + string));
+                getScheduler().runTask(Main.getInstance(), new Runnable() {
+                    @Override
+                    public void run() {
+                        dispatchCommand(getConsoleSender(), "miraiwhitelist force " + string);
+                    }
+                });
                 MiraiBot.getBot(e.getBotID()).getGroup(e.getGroupID()).sendMessage(plugin.getConfig().getString("Message.ForceAdd").replaceAll("%arg%", string));
             }
         }

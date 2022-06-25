@@ -1,7 +1,6 @@
 package com.poikcue.MiraiWhitelist;
 
 import me.dreamvoid.miraimc.api.MiraiBot;
-import me.dreamvoid.miraimc.bukkit.event.MiraiGroupMemberJoinEvent;
 import me.dreamvoid.miraimc.bukkit.event.group.member.MiraiMemberJoinEvent;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;

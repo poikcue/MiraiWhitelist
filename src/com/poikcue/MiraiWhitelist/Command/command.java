@@ -18,7 +18,7 @@ public class command implements CommandExecutor {
     @ParametersAreNonnullByDefault
     public boolean onCommand(CommandSender commandSender, Command command, String label, String[] args) {
         if (args.length == 0) {
-            if (commandSender.hasPermission("MiraiWhitelist.reload")) {
+            if (commandSender.hasPermission("MiraiWhitelist.admin")) {
                 commandSender.sendMessage(AQUA + "MiraiWhitelist" + DARK_GRAY + " by poikcue");
                 commandSender.sendMessage(WHITE + " - /miraiwhitelist reload 重新加载插件。");
                 commandSender.sendMessage(WHITE + " - /miraiwhitelist force <QQ号码> <ID> 强制添加白名单。");

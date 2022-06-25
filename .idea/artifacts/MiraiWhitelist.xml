@@ -1,8 +1,0 @@
-<component name="ArtifactManager">
-  <artifact type="jar" build-on-make="true" name="MiraiWhitelist">
-    <output-path>$PROJECT_DIR$/out/artifacts/MiraiWhitelist</output-path>
-    <root id="archive" name="MiraiWhitelist.jar">
-      <element id="module-output" name="MiraiWhitelist" />
-    </root>
-  </artifact>
-</component>

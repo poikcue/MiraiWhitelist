@@ -6,7 +6,7 @@ General:
   # 从此开始...
   Version:
     CurrentConfig: Null
-    Config: 1.2.1
+    Config: 1.2.2
     MiraiMC: 1.7-pre3
   # 至此结束。
   # 在此之间，如果您没有更新 jar 文件，那么您不应该更换任何此部分的信息。

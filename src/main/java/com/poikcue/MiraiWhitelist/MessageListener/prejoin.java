@@ -20,15 +20,15 @@ public class prejoin implements Listener {
     @EventHandler
     public void onJoin(AsyncPlayerPreLoginEvent e) {
         UUID uuid = e.getUniqueId();
-        Bukkit.getLogger().info("[MiraiWhitelist] Player of " + e.getName() + " (UUID:" + uuid + ") try to log in.");
-        if(plugin.getConfig().getString("General.Enable.BuildInWhitelist") == "true") {
+        Bukkit.getLogger().info("[MiraiWhitelist] 玩家 " + e.getName() + " (通用单一标识符:" + uuid + ") 尝试登入");
+        if(plugin.getConfig().getString("通用.可启用.内置白名单系统") == "启用") {
             plugin.reloadConfig();
-            if (plugin.getConfig().getString("Whitelist." + uuid) == null ) {
-                e.disallow(AsyncPlayerPreLoginEvent.Result.KICK_OTHER, translateAlternateColorCodes('&', plugin.getConfig().getString("Message.HaveNotWhitelist")));
-                Bukkit.getLogger().info("[MiraiWhitelist] Player of " + e.getName() + " (UUID:" + uuid + ") don't have permission. Cancelled.");
+            if (plugin.getConfig().getString("内置白名单列表." + uuid) == null ) {
+                e.disallow(AsyncPlayerPreLoginEvent.Result.KICK_OTHER, translateAlternateColorCodes('&', plugin.getConfig().getString("文本消息.启用内置白名单系统后无白名单玩家踢出时屏幕显示的信息")));
+                Bukkit.getLogger().info("[MiraiWhitelist] 玩家 " + e.getName() + " (通用单一标识符:" + uuid + ") 因为未在白名单内，已拒绝加入。");
             }
             else{
-                Bukkit.getLogger().info("[MiraiWhitelist] Player of " + e.getName() + " (UUID:" + uuid + ") Logged in.");
+                Bukkit.getLogger().info("[MiraiWhitelist] 玩家 " + e.getName() + " (通用单一标识符:" + uuid + ") 已加入。");
             }
         }
     }

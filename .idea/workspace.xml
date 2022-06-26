@@ -5,7 +5,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f4b8cf23-40f8-402b-832d-882f302f127b" name="Changes" comment="Change to maven">
-      <change afterPath="$PROJECT_DIR$/src/main/resources/MiraiMC-Bukkit.jar" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/poikcue/MiraiWhitelist/Command/command.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/poikcue/MiraiWhitelist/Command/command.java" afterDir="false" />
@@ -13,6 +12,9 @@
       <change beforePath="$PROJECT_DIR$/src/main/java/com/poikcue/MiraiWhitelist/MessageListener/adminForce.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/poikcue/MiraiWhitelist/MessageListener/adminForce.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/poikcue/MiraiWhitelist/MessageListener/prejoin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/poikcue/MiraiWhitelist/MessageListener/prejoin.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/poikcue/MiraiWhitelist/MessageListener/whitelist.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/poikcue/MiraiWhitelist/MessageListener/whitelist.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/poikcue/MiraiWhitelist/welcome.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/poikcue/MiraiWhitelist/welcome.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/config.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/config.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/plugin.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/plugin.yml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -43,7 +45,7 @@
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
-    "project.structure.last.edited": "Libraries",
+    "project.structure.last.edited": "Modules",
     "project.structure.proportion": "0.18261719",
     "project.structure.side.proportion": "0.2"
   }
@@ -69,6 +71,8 @@
             </option>
             <option name="goals">
               <list>
+                <option value="clean" />
+                <option value="compile" />
                 <option value="package" />
               </list>
             </option>
@@ -93,7 +97,8 @@
       <option name="presentableId" value="Default" />
       <updated>1656153041286</updated>
       <workItem from="1656153041987" duration="3517000" />
-      <workItem from="1656160906060" duration="256000" />
+      <workItem from="1656160906060" duration="3021000" />
+      <workItem from="1656222895783" duration="3638000" />
     </task>
     <task id="LOCAL-00001" summary="Change to maven">
       <created>1656154050361</created>
@@ -102,7 +107,21 @@
       <option name="project" value="LOCAL" />
       <updated>1656154050361</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Change to maven">
+      <created>1656161228990</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1656161228990</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Change to maven">
+      <created>1656163587279</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1656163587279</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

@@ -13,6 +13,6 @@ public class welcome implements Listener {
     }
     @EventHandler
     public void welcome(MiraiMemberJoinEvent e){
-        MiraiBot.getBot(e.getBotID()).getGroup(e.getGroupID()).sendMessage(plugin.getConfig().getString("Message.WelcomeFriend").replaceAll("%name%", e.getMemberNick()));
+        MiraiBot.getBot(e.getBotID()).getGroup(e.getGroupID()).sendMessage(plugin.getConfig().getString("文本消息.加入群聊时欢迎消息").replaceAll("%name%", e.getMemberNick()));
     }
 }

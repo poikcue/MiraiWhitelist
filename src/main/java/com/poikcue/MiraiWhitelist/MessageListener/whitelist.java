@@ -20,54 +20,54 @@ public class whitelist implements Listener {
     @EventHandler
     public void onMessageGet(MiraiGroupMessageEvent e) throws Exception {
 
-        if (e.getMessage().startsWith(plugin.getConfig().getString("Message.ReplaceGroupMessageTAG"))) {
-             String name = e.getMessage().replace(plugin.getConfig().getString("Message.ReplaceGroupMessageTAG"), "").replaceAll(" ", "");
-             String sender = String.valueOf(e.getSenderID());
-             URL url = new URL("https://api.mojang.com/users/profiles/minecraft/" + name);
+        if (e.getMessage().startsWith(plugin.getConfig().getString("文本消息.群聊中标准白名单模式所寻找的关键字"))) {
+             String PlayerName = e.getMessage().replace(plugin.getConfig().getString("文本消息.群聊中标准白名单模式所寻找的关键字"), "").replaceAll(" ", "");
+             String SenderAccount = String.valueOf(e.getSenderID());
+             URL url = new URL("https://api.mojang.com/users/profiles/minecraft/" + PlayerName);
              HttpURLConnection connection = (HttpURLConnection) url.openConnection();
-             UUID uuid = Bukkit.getOfflinePlayer(name).getUniqueId();
+             UUID uuid = Bukkit.getOfflinePlayer(PlayerName).getUniqueId();
              connection.setRequestMethod("GET");
-             if (plugin.getConfig().get("Data." + sender) == null) {
-                 if (plugin.getConfig().getString("Whitelist." + uuid) == null) {
+             if (plugin.getConfig().get("数据." + SenderAccount) == null) {
+                 if (plugin.getConfig().getString("内置白名单列表." + uuid) == null) {
                      if (connection.getResponseCode() == HttpURLConnection.HTTP_OK) {
-                         MiraiBot.getBot(e.getBotID()).getGroup(e.getGroupID()).sendMessage(plugin.getConfig().getString("Message.PremiumMinecraftAccountMessage").replaceAll("%ID%", name).replaceAll("%name%", e.getSenderName()));
+                         MiraiBot.getBot(e.getBotID()).getGroup(e.getGroupID()).sendMessage(plugin.getConfig().getString("文本消息.正版玩家成功添加白名单祝贺").replaceAll("%ID%", PlayerName).replaceAll("%name%", e.getSenderName()));
                          getScheduler().runTaskAsynchronously(Main.getInstance(), new Runnable() {
                              @Override
                              public void run() {
-                                 plugin.getConfig().set("Data." + sender + ".UUID", String.valueOf(uuid));
-                                 plugin.getConfig().set("Whitelist." + uuid, "true");
+                                 plugin.getConfig().set("数据." + SenderAccount + ".通用单一标识符", String.valueOf(uuid));
+                                 plugin.getConfig().set("内置白名单列表." + uuid, "已加入");
                                  plugin.saveConfig();
                              }
                          });
-                         if (plugin.getConfig().getString("General.WhitelistCommand") == "Vanilla" && plugin.getConfig().getString("General.Enable.BuildInWhitelist") == "false") {
+                         if (plugin.getConfig().getString("通用.运行白名单命令") == "我的世界原版服务端" && plugin.getConfig().getString("通用.可启用.内置白名单系统") == "不启用") {
                              getScheduler().runTask(Main.getInstance(), new Runnable() {
                                  @Override
                                  public void run() {
-                                     dispatchCommand(getConsoleSender(), "whitelist add " + name);
+                                     dispatchCommand(getConsoleSender(), "whitelist add " + PlayerName);
                                  }
                              });
-                         } else if(plugin.getConfig().getString("General.Enable.BuildInWhitelist") == "false") {
-                             String command = plugin.getConfig().getString("General.WhitelistCommand");
+                         } else if(plugin.getConfig().getString("通用.可启用.内置白名单系统") == "不启用") {
+                             String command = plugin.getConfig().getString("通用.运行白名单命令");
                              getScheduler().runTaskAsynchronously(Main.getInstance(), new Runnable() {
                                  @Override
                                  public void run() {
-                                     dispatchCommand(getConsoleSender(), command.replaceAll("%ID%", name));
+                                     dispatchCommand(getConsoleSender(), command.replaceAll("%ID%", PlayerName));
                                  }
                              });
                          }
                          //正版玩家
                      } else if (connection.getResponseCode() == HttpURLConnection.HTTP_NO_CONTENT) {
-                         MiraiBot.getBot(e.getBotID()).getGroup(e.getGroupID()).sendMessage(plugin.getConfig().getString("Message.CrackedMinecraftAccountAlert").replaceAll("%ID%", name).replaceAll("%name%", e.getSenderName()));
+                         MiraiBot.getBot(e.getBotID()).getGroup(e.getGroupID()).sendMessage(plugin.getConfig().getString("文本消息.请求非正版白名单时群聊中通知信息").replaceAll("%ID%", PlayerName).replaceAll("%name%", e.getSenderName()));
                          //正常访问，但是是离线玩家
                      } else {
-                         MiraiBot.getBot(e.getBotID()).getGroup(e.getGroupID()).sendMessage(plugin.getConfig().getString("Message.UrlError").replaceAll("%ID%", name).replaceAll("%name%", e.getSenderName()));
+                         MiraiBot.getBot(e.getBotID()).getGroup(e.getGroupID()).sendMessage(plugin.getConfig().getString("文本消息.请求我的世界国际版本官方应用编程接口网络异常").replaceAll("%ID%", PlayerName).replaceAll("%name%", e.getSenderName()));
                          //出现问题，访问异常
                      }
                  }else{
-                     MiraiBot.getBot(e.getBotID()).getGroup(e.getGroupID()).sendMessage(plugin.getConfig().getString("Message.AlreadyHave").replaceAll("%ID%", name).replaceAll("%name%", e.getSenderName()));
+                     MiraiBot.getBot(e.getBotID()).getGroup(e.getGroupID()).sendMessage(plugin.getConfig().getString("文本消息.账户未曾经申请过有效白名单但目标玩家已在白名单列表中").replaceAll("%ID%", PlayerName).replaceAll("%name%", e.getSenderName()));
                  }
              }else {
-                 MiraiBot.getBot(e.getBotID()).getGroup(e.getGroupID()).sendMessage(plugin.getConfig().getString("Message.AlreadySignedUp").replaceAll("%ID%", name).replaceAll("%name%", e.getSenderName()));
+                 MiraiBot.getBot(e.getBotID()).getGroup(e.getGroupID()).sendMessage(plugin.getConfig().getString("文本消息.此账户已经申请过白名单时通知信息").replaceAll("%ID%", PlayerName).replaceAll("%name%", e.getSenderName()));
              }
         }
     }
